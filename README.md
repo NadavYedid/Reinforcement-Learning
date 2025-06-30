@@ -1,2 +1,1 @@
-# Reinforcement-Learning
-This project implements a reinforcement learning simulation for study planning using Q-learning. 
+[README.md](https://github.com/user-attachments/files/20984811/README.md)
