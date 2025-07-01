@@ -13,15 +13,15 @@ class QLearningAgent:
     def __init__(self, state_space_dims, action_space_size,
                  alpha=0.1, gamma=0.9, epsilon=1.0,
                  min_epsilon=0.01, decay_rate=0.995):
-        """*** Initialize the Q-learning agent parameters and Q-table ***"""
-        self.state_space_dims = state_space_dims
-        self.alpha = alpha
-        self.gamma = gamma
-        self.epsilon = epsilon
-        self.min_epsilon = min_epsilon
-        self.decay_rate = decay_rate
-        self.action_space = action_space_size
-        self.q_table = np.zeros(state_space_dims + (action_space_size,))
+        """ Initialize the Q-learning agent parameters and Q-table """
+        self.state_space_dims = state_space_dims  # Dimensions of the state space (steps, topics, fatigue)
+        self.alpha = alpha  # Learning rate - how much new info overrides old Q-values
+        self.gamma = gamma  # Discount factor - importance of future rewards
+        self.epsilon = epsilon  # Exploration rate - probability to choose random action
+        self.min_epsilon = min_epsilon  # Minimum exploration rate after decay
+        self.decay_rate = decay_rate  # Rate at which epsilon decays each episode
+        self.action_space = action_space_size  # Number of possible actions
+        self.q_table = np.zeros(state_space_dims + (action_space_size,))  # Initialize Q-table
 
     def select_action(self, state):
         """
@@ -56,11 +56,11 @@ class QLearningAgent:
         self.q_table[state][action] += self.alpha * td_error
 
     def decay_epsilon(self):
-        """*** Decay the epsilon value after each episode ***"""
+        """ Decay the epsilon value after each episode """
         self.epsilon = max(self.min_epsilon, self.epsilon * self.decay_rate)
 
     def print_best_policy(self):
-        """*** Display optimal policy learned by the agent clearly and concisely ***"""
+        """ Display optimal policy learned by the agent clearly and concisely """
         actions_meaning = {
             0: "Full Rest", 1: "Short Rest", 2: "Review Material",
             3: "Study Topic 1", 4: "Study Topic 2",
@@ -120,7 +120,7 @@ class QLearningAgent:
 
 
 def train_agent(episodes=1000, verbose=True):
-    """*** Train the Q-learning agent ***"""
+    """ Train the Q-learning agent """
     env = LearningEnv()
     state_dims = (env.max_steps + 1, env.num_topics + 1, env.max_fatigue + 1)
     agent = QLearningAgent(state_space_dims=state_dims, action_space_size=7)
