@@ -24,14 +24,14 @@ class LearningEnv:
     """
 
     def __init__(self):
-        """*** Initialize the learning environment parameters ***"""
+        """ Initialize the learning environment parameters """
         self.num_topics = 4
         self.max_steps = 5
         self.max_fatigue = 5
         self.reset()
 
     def reset(self):
-        """*** Reset environment to initial conditions at the start of an episode ***"""
+        """ Reset environment to initial conditions at the start of an episode """
         self.current_step = 0
         self.topics_learned = set()
         self.fatigue = 0
@@ -83,7 +83,7 @@ class LearningEnv:
         return self._get_state(), reward, done
 
     def render(self):
-        """*** Display the current state of the environment ***"""
+        """ Display the current state of the environment """
         action_meaning = {
             0: "Full Rest",
             1: "Short Rest",
