@@ -113,34 +113,34 @@ def run_multiple_experiments():
     """
     experiments = [
         {
-            "name": "Fast_Learner",  # Learns quickly – high alpha
-            "alpha": 0.5,
-            "gamma": 0.9,
-            "decay": 0.99
+            "name": "Fast_Learner",  # Learns quickly - high alpha
+            "alpha": 0.5,  # Learning rate
+            "gamma": 0.9,  # Discount factor
+            "decay": 0.99  # Decay
         },
         {
-            "name": "Slow_Learner",  # Learns cautiously – low alpha
-            "alpha": 0.1,
-            "gamma": 0.9,
-            "decay": 0.99
+            "name": "Slow_Learner",  # Learns cautiously - low alpha
+            "alpha": 0.1,  # Learning rate
+            "gamma": 0.9,  # Discount factor
+            "decay": 0.99  # Decay
         },
         {
             "name": "Greedy_ShortSighted",  # Prioritizes short-term rewards
-            "alpha": 0.3,
-            "gamma": 0.5,
-            "decay": 0.99
+            "alpha": 0.3,  # Learning rate
+            "gamma": 0.5,  # Discount factor
+            "decay": 0.99  # Decay
         },
         {
-            "name": "Aggressive_Explorer",  # Explores a lot – slow epsilon decay
-            "alpha": 0.3,
-            "gamma": 0.9,
-            "decay": 0.999
+            "name": "Aggressive_Explorer",  # Explores a lot - slow epsilon decay
+            "alpha": 0.3,  # Learning rate
+            "gamma": 0.9,  # Discount factor
+            "decay": 0.999  # Decay
         },
         {
             "name": "Conservative_Stable",  # Conservative but stable learning
-            "alpha": 0.2,
-            "gamma": 0.95,
-            "decay": 0.97
+            "alpha": 0.2,  # Learning rate
+            "gamma": 0.95,  # Discount factor
+            "decay": 0.97  # Decay
         }
     ]
 
@@ -158,8 +158,8 @@ def run_multiple_experiments():
 
     df = pd.DataFrame(all_logs)
     df.to_csv("results_summary.csv", index=False)
-    print("✅ All experiments completed and saved to 'results_summary.csv'")
-    print("📊 Plots saved as PNG files for each experiment.")
+    print("All experiments completed and saved to 'results_summary.csv'")
+    print("Plots saved as PNG files for each experiment.")
 
 
 if __name__ == "__main__":
